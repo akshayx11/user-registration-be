@@ -1,0 +1,20 @@
+{
+  "name": "user-registration-be",
+  "version": "1.0.0",
+  "description": "backend for the user registration",
+  "type": "module",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --experimental-modules app.mjs"
+  },
+  "author": "Akshay Kumar Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7"
+  }
+}
