@@ -8,7 +8,7 @@ const dataModifierSchema = {
   name: String
 }
 const userSchema = new mongoose.Schema({
-  userName: {
+  username: {
     type: String,
     lowercase: true
   },
@@ -39,7 +39,7 @@ class User {
   constructor() {
     this.User = mongoose.model("User", userSchema, "Users");
   }
-  static create(user) {
+  create(user) {
     user.status = "active";
     user.createdAt = Date.now();
     const newUser = new this.User(user);
