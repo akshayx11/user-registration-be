@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     lowercase: true
   },
-  password: String,
+  password: Object,
   title: String,
   firstName: String,
   middleName: String,
@@ -46,7 +46,12 @@ class User {
     return newUser.save();
   }
   async getAllUsers() {
-    return await this.User.find();
+    return this.User.find();
+  }
+  async getUserById(userId) {
+    return this.User.findOne({
+      _id: new ObjectId(userId)
+    });
   }
 }
 
