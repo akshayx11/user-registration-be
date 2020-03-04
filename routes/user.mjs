@@ -1,10 +1,11 @@
 import express from "express";
 import User from "./../models/user.mjs"
 import {
-    createUserValidator
+    createAndUpdateUserValidator
 } from "../validators/user.mjs";
 import {
-    createUser
+    createUser,
+    updateUser
 } from "../controller/user.mjs";
 import {
     getUserById
@@ -16,7 +17,7 @@ router.post('/', async (req, res, next) => {
         const {
             error,
             value
-        } = createUserValidator.validate(req.body);
+        } = createAndUpdateUserValidator.validate(req.body);
         if (error) {
             res.statusCode = 403;
             res.send(error);
@@ -39,6 +40,26 @@ router.get('/userDetails', async (req, res, next) => {
         } = req.query;
         const user = await getUserById(userId);
         res.send(user);
+    } catch (e) {
+        next(e);
+    }
+});
+
+router.put('/:id', async (req, res, next) => {
+    try {
+        const {
+            error,
+            value
+        } = createAndUpdateUserValidator.validate(req.body);
+        if (error) {
+            res.statusCode = 403;
+            res.send(error);
+        }
+        const {
+            id: userId
+        } = req.params;
+        const updatedUser = updateUser(userId, value);
+        res.send(updatedUser);
     } catch (e) {
         next(e);
     }

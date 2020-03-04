@@ -23,3 +23,8 @@ export const getUserById = async (userId) => {
     user.password = decrypt(user.password);
     return user;
 };
+
+export const updateUser = async (userId, userData) => {
+    userData.password = encrypt(userData.password);
+    return await userModel.updateUser(userId, userData);
+};

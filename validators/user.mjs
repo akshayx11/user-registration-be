@@ -1,6 +1,6 @@
 import Joi from "@hapi/joi";
 
-export const createUserValidator = Joi.object({
+export const createAndUpdateUserValidator = Joi.object({
     username: Joi.string().required(),
     password: Joi.string().required(),
     title: Joi.string(),
