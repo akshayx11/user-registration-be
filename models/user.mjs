@@ -53,6 +53,11 @@ class User {
       _id: new ObjectId(userId)
     });
   }
+  async updateUser(userId, userData) {
+    return this.User.updateOne({
+      _id: new ObjectId(userId)
+    }, userData);
+  }
 }
 
 export default User;
