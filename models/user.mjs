@@ -46,11 +46,18 @@ class User {
     return newUser.save();
   }
   async getAllUsers() {
-    return this.User.find();
+    return this.User.find({
+      status: {
+        $ne: "archived"
+      }
+    });
   }
   async getUserById(userId) {
     return this.User.findOne({
-      _id: new ObjectId(userId)
+      _id: new ObjectId(userId),
+      status: {
+        $ne: "archived"
+      }
     });
   }
   async updateUser(userId, userData) {

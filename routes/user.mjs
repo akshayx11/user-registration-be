@@ -64,4 +64,19 @@ router.put('/:id', async (req, res, next) => {
         next(e);
     }
 });
+
+//soft delete
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const {
+            id: userId
+        } = req.params;
+        const deleteUser = updateUser(userId, {
+            status: "archived"
+        });
+        res.send(deleteUser);
+    } catch (e) {
+        next(e);
+    }
+});
 export default router;
