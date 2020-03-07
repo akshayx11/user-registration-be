@@ -22,7 +22,6 @@ export const getUserById = async (userId) => {
     if (!user) {
         return "User not found or deleted."
     }
-    user.password = decrypt(user.password);
     return user;
 };
 
