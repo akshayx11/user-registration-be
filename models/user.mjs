@@ -50,6 +50,8 @@ class User {
       status: {
         $ne: "archived"
       }
+    }, {
+      password: 0
     });
   }
   async getUserById(userId) {
@@ -58,6 +60,8 @@ class User {
       status: {
         $ne: "archived"
       }
+    }, {
+      password: 0
     });
   }
   async updateUser(userId, userData) {
