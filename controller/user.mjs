@@ -19,12 +19,16 @@ export const getUserById = async (userId) => {
     const user = await userModel.getUserById(
         new ObjectId(userId)
     );
-    console.log("user>>>>", JSON.stringify(user, null, 2))
+    if (!user) {
+        return "User not found or deleted."
+    }
     user.password = decrypt(user.password);
     return user;
 };
 
 export const updateUser = async (userId, userData) => {
-    userData.password = encrypt(userData.password);
+    if (userData.password) {
+        userData.password = encrypt(userData.password);
+    }
     return await userModel.updateUser(userId, userData);
 };
