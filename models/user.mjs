@@ -61,6 +61,7 @@ class User {
     });
   }
   async updateUser(userId, userData) {
+    userData.updatedAt = Date.now();
     return this.User.updateOne({
       _id: new ObjectId(userId)
     }, userData);
